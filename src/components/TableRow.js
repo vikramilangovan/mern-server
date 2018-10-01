@@ -10,7 +10,7 @@ class TableRow extends Component {
         this.delete = this.delete.bind(this);
     }
     delete() {
-        axios.get('http://localhost:4200/serverport/delete/' + this.props.obj._id).then(
+        axios.get('/serverport/delete/' + this.props.obj._id).then(
             this.props.changeState()
         ).catch(err => console.log(err));
 

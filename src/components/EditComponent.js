@@ -38,7 +38,7 @@ export default class EditComponent extends Component {
             name: this.state.name,
             port: this.state.port
         }
-        axios.post('http://localhost:4200/serverport/update/' + this.props.match.params.id, serverport)
+        axios.post('/serverport/update/' + this.props.match.params.id, serverport)
             .then(res => this.props.history.push('/index'));
         this.setState({
             name: '',
