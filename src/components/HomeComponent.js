@@ -1,6 +1,7 @@
 //CreateComponent.js
 
 import React, { Component } from 'react';
+import FaceBookComponent from './FaceBookComponent';
 
 export default class CreateComponent extends Component {
  constructor() {
@@ -20,6 +21,7 @@ export default class CreateComponent extends Component {
     <div>
      <h3>RealTime is : {this.state.time}</h3>
     </div>
+    <FaceBookComponent />
    </div>
   );
  }
