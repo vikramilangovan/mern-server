@@ -1,4 +1,5 @@
 // EditComponent.js
+/*global FB*/
 
 import React, { Component } from 'react';
 import FacebookLogin from "react-facebook-login";
@@ -13,8 +14,6 @@ export default class FaceBookComponent extends Component {
     };
 
     responseFacebook = response => {
-        // console.log(response);
-
         this.setState({
             isLoggedIn: true,
             userID: response.userID,
@@ -23,8 +22,22 @@ export default class FaceBookComponent extends Component {
             picture: response.picture.data.url
         });
     };
-   
+
     componentClicked = () => console.log("clicked");
+
+    logoutFacebook = () => {
+        this.setState({
+            isLoggedIn: false,
+            userID: "",
+            name: "",
+            email: "",
+            picture: ""
+        });
+        FB.logout(function (response) {
+            this.props.history.push('/')
+        });
+        console.log("logout")
+    };
 
     render() {
         let fbContent;
@@ -42,6 +55,8 @@ export default class FaceBookComponent extends Component {
                     <img src={this.state.picture} alt={this.state.name} />
                     <h2>Welcome {this.state.name}</h2>
                     Email: {this.state.email}
+                    <br />
+                    <button onClick={this.logoutFacebook}>Facebook Logout</button>
                 </div>
             );
         } else {
@@ -50,7 +65,7 @@ export default class FaceBookComponent extends Component {
                     <p>Login With facebook default Button</p>
                     <br />
                     <FacebookLogin
-                        appId="358789337996451"
+                        appId="3598748943327919674571449"
                         autoLoad={false}
                         fields="name,email,picture"
                         onClick={this.componentClicked}
@@ -59,7 +74,7 @@ export default class FaceBookComponent extends Component {
                     <p>Login With facebook custom Button</p>
                     <br />
                     <FacebookLogin
-                        appId="1088597931155576"
+                        appId="3598748943327919674571449"
                         autoLoad={true}
                         fields="name,email,picture"
                         callback={this.responseFacebook}
