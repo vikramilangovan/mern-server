@@ -15,7 +15,7 @@ export default class CreateComponent extends Component {
   setTimeout(() => { this.setState({ time: d.toString() }) }, 1000)
   return (
    <div style={{ marginTop: 50 }}>
-    Welcome to MERN CRUD Operation
+    Welcome to MERN CRUD Operation - with auto reload
     <h3>MERN - MongoDB, Express.js, React.js, Node.js</h3>
     <h4>CRUD - Create, Read, Update, Delete</h4>
     <div>

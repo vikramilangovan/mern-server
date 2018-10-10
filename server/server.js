@@ -9,18 +9,22 @@ const cors = require('cors');
 const config = require('./database/DB');
 
 const ServerPortRouter = require('./routes/ServerPortRouter');
+const ServerRouter = require('./routes/ServerRoutes');
 
 mongoose.connect(config.DB).then(
-    () => {console.log('Database is connected') },
-    err => { console.log('Can not connect to the database' +err)
-});
+    () => { console.log('Database is connected') },
+    err => {
+        console.log('Can not connect to the database' + err)
+    });
 
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/serverport', ServerPortRouter);
+app.use('/server', ServerRouter);
 
-app.listen(PORT, function(){
+
+app.listen(PORT, function () {
     console.log('server is running on port', PORT);
 })
